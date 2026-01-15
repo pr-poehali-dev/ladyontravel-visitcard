@@ -136,7 +136,7 @@ const Index = () => {
         <div className="container mx-auto text-center">
           <div className="mb-8 inline-block">
             <img 
-              src="https://cdn.poehali.dev/projects/9aef2231-d61e-4f9e-ac76-4dfe8e28a393/files/82fe14fe-d12a-42fa-8ac2-8c54dde56463.jpg"
+              src="https://cdn.poehali.dev/files/IMG_5099.png"
               alt="Аксиния"
               className="w-32 h-32 rounded-full object-cover mx-auto shadow-2xl border-4 border-white"
             />
