@@ -1,10 +1,32 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
 import Icon from "@/components/ui/icon";
+import { useState } from "react";
 
 const Index = () => {
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({ name: "", contact: "", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    setTimeout(() => {
+      toast({
+        title: "Заявка отправлена!",
+        description: "Аксиния свяжется с вами в ближайшее время.",
+      });
+      setFormData({ name: "", contact: "", message: "" });
+      setIsSubmitting(false);
+    }, 1000);
   };
 
   const services = [
@@ -231,34 +253,82 @@ const Index = () => {
       </section>
 
       <section id="contact" className="py-20 px-4 bg-gradient-to-br from-primary via-secondary to-primary text-white">
-        <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6">Свяжитесь со мной</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
+        <div className="container mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-6">Свяжитесь со мной</h2>
+          <p className="text-xl text-center mb-12 max-w-2xl mx-auto">
             Готова ответить на все вопросы и подобрать для вас идеальное путешествие
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-            <Button 
-              size="lg" 
-              variant="secondary"
-              onClick={() => window.location.href = "tel:+79057973311"}
-              className="text-lg hover-scale bg-white text-primary hover:bg-white/90"
-            >
-              <Icon name="Phone" size={20} className="mr-2" />
-              +7 (905) 797-33-11
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline"
-              onClick={() => window.open("https://wa.me/79057973311", "_blank")}
-              className="text-lg hover-scale bg-transparent border-2 border-white text-white hover:bg-white/10"
-            >
-              <Icon name="MessageCircle" size={20} className="mr-2" />
-              WhatsApp
-            </Button>
-          </div>
-          <div className="flex items-center justify-center gap-2 text-sm opacity-90">
-            <Icon name="ShieldCheck" size={18} />
-            <span>Работаю с надежными туроператорами в едином реестре</span>
+          
+          <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+            <div>
+              <h3 className="text-2xl font-semibold mb-6">Оставьте заявку</h3>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <Input
+                    placeholder="Ваше имя"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    required
+                    className="bg-white/10 border-white/30 text-white placeholder:text-white/60 focus:border-white"
+                  />
+                </div>
+                <div>
+                  <Input
+                    placeholder="Телефон или email"
+                    value={formData.contact}
+                    onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
+                    required
+                    className="bg-white/10 border-white/30 text-white placeholder:text-white/60 focus:border-white"
+                  />
+                </div>
+                <div>
+                  <Textarea
+                    placeholder="Расскажите о желаемом путешествии"
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    required
+                    rows={5}
+                    className="bg-white/10 border-white/30 text-white placeholder:text-white/60 focus:border-white resize-none"
+                  />
+                </div>
+                <Button 
+                  type="submit"
+                  size="lg"
+                  disabled={isSubmitting}
+                  className="w-full bg-white text-primary hover:bg-white/90 text-lg"
+                >
+                  {isSubmitting ? "Отправка..." : "Отправить заявку"}
+                </Button>
+              </form>
+            </div>
+
+            <div className="flex flex-col justify-center">
+              <h3 className="text-2xl font-semibold mb-6">Или свяжитесь напрямую</h3>
+              <div className="space-y-4">
+                <Button 
+                  size="lg" 
+                  variant="secondary"
+                  onClick={() => window.location.href = "tel:+79057973311"}
+                  className="w-full text-lg hover-scale bg-white text-primary hover:bg-white/90"
+                >
+                  <Icon name="Phone" size={20} className="mr-2" />
+                  +7 (905) 797-33-11
+                </Button>
+                <Button 
+                  size="lg" 
+                  variant="outline"
+                  onClick={() => window.open("https://wa.me/79057973311", "_blank")}
+                  className="w-full text-lg hover-scale bg-transparent border-2 border-white text-white hover:bg-white/10"
+                >
+                  <Icon name="MessageCircle" size={20} className="mr-2" />
+                  WhatsApp
+                </Button>
+              </div>
+              <div className="flex items-center gap-2 text-sm opacity-90 mt-8">
+                <Icon name="ShieldCheck" size={18} />
+                <span>Работаю с надежными туроператорами в едином реестре</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
