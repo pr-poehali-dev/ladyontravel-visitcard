@@ -324,9 +324,15 @@ const Index = () => {
                   WhatsApp
                 </Button>
               </div>
-              <div className="flex items-center gap-2 text-sm opacity-90 mt-8">
-                <Icon name="ShieldCheck" size={18} />
-                <span>Работаю с надежными туроператорами в едином реестре</span>
+              <div className="space-y-3 mt-8">
+                <div className="flex items-center gap-2 text-sm opacity-90">
+                  <Icon name="ShieldCheck" size={18} />
+                  <span>Работаю с надежными туроператорами в едином реестре</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm opacity-90">
+                  <Icon name="Badge" size={18} />
+                  <span>Реестровый номер агентства: РТА 1 162</span>
+                </div>
               </div>
             </div>
           </div>
