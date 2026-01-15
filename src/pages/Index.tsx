@@ -142,7 +142,7 @@ const Index = () => {
             />
           </div>
           <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
-            Аксиния — ваш персональный турагент
+            Аксиния — ваш личный турагент
           </h1>
           <p className="text-lg md:text-xl mb-8 text-gray-700 max-w-3xl mx-auto">
             Помогу найти идеальный тур, забронирую отель мечты и буду рядом 24/7
