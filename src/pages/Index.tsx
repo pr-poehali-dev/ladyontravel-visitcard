@@ -85,23 +85,7 @@ const Index = () => {
     }
   ];
 
-  const testimonials = [
-    {
-      name: "Елена Смирнова",
-      text: "Аксиния помогла организовать незабываемый отпуск на Мальдивах! Всё было идеально, от отеля до трансфера. Спасибо за заботу!",
-      rating: 5
-    },
-    {
-      name: "Дмитрий Коваленко",
-      text: "Обратился в первый раз через LadyOnTravel, очень доволен. Аксиния подобрала тур быстро, ответила на все вопросы. Рекомендую!",
-      rating: 5
-    },
-    {
-      name: "Ольга Петрова",
-      text: "Горнолыжный тур в Австрию прошел на ура! Аксиния учла все наши пожелания, была на связи даже во время поездки. Профессионал своего дела!",
-      rating: 5
-    }
-  ];
+
 
   return (
     <div className="min-h-screen">
@@ -118,9 +102,7 @@ const Index = () => {
             <button onClick={() => scrollToSection("about")} className="hover:text-primary transition">
               Обо мне
             </button>
-            <button onClick={() => scrollToSection("testimonials")} className="hover:text-primary transition">
-              Отзывы
-            </button>
+
             <button onClick={() => scrollToSection("contact")} className="hover:text-primary transition">
               Контакты
             </button>
@@ -228,29 +210,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="testimonials" className="py-20 px-4 bg-white">
-        <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-4">Отзывы клиентов</h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-            Мне доверяют, и я горжусь каждым довольным путешественником
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="hover-scale border-2">
-                <CardContent className="p-6">
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Icon key={i} name="Star" size={20} className="text-yellow-400 fill-yellow-400" />
-                    ))}
-                  </div>
-                  <p className="text-gray-700 mb-4 italic">"{testimonial.text}"</p>
-                  <p className="font-semibold text-primary">{testimonial.name}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       <section id="contact" className="py-20 px-4 bg-gradient-to-br from-primary via-secondary to-primary text-white">
         <div className="container mx-auto">
